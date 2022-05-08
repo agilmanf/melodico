@@ -1,0 +1,23 @@
+.sidebar {
+  position: relative;
+  font-size: 16px;
+  z-index: 3;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: white;
+}
+
+.sidebar ul li a:hover {
+  color: #ffe500;
+}
+
+.sidebar ul li.active {
+  background-color: #ffe500;
+}
+
+.sidebar ul li.active a {
+  background-color: #ffe500;
+  color: black;
+}

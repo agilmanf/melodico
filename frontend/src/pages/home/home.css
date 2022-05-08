@@ -1,0 +1,136 @@
+header {
+  width: 100%;
+  height: 300px;
+  margin: 20px auto 40px auto;
+  overflow: hidden;
+  position: relative;
+  border-radius: 5px;
+}
+header .overlay {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: 0 -400px;
+  background-image: url("https://source.unsplash.com/ZhQCZjr9fHo");
+  transition: 1500ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.header-content:hover + .overlay {
+  transform: scale(1.1);
+}
+
+.header-content {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  display: flex;
+  background: rgb(0, 0, 0);
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.2411889922752809) 0%,
+    rgba(0, 0, 0, 0.8001777563202247) 100%
+  );
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.header-content a {
+  padding: 5px 8px;
+  background-color: #ffff00;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.updateLagu {
+  width: 80%;
+  max-width: 800px;
+  min-width: 450px;
+  height: 100px;
+  background-color: #ffe500;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.updateLagu img {
+  width: 60px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.updateLagu form {
+  width: 75%;
+  color: black;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.updateLagu span {
+  font-size: 14px;
+}
+
+.updateLagu input {
+  position: relative;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  padding: 3px 15px;
+  width: 77%;
+  color: #1f2127;
+}
+
+.updateLagu button {
+  border: none;
+  outline: none;
+  background-color: #1f2127;
+  color: aliceblue;
+  padding: 5px 10px;
+  border-radius: 3px;
+  margin-left: 10px;
+}
+
+.get-update-container {
+  width: 80%;
+  max-width: 800px;
+  min-width: 450px;
+}
+
+.getUpdate {
+  width: 100%;
+  max-width: 800px;
+  min-width: 450px;
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.getUpdate .titik {
+  color: black;
+  font-weight: bolder;
+  float: right;
+}
+
+.getUpdate img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.getUpdate .nama {
+  font-weight: bolder;
+  display: inline;
+  color: black;
+}
+
+.love-icon {
+  color: red;
+  font-size: 25px;
+}

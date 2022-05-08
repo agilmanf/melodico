@@ -1,0 +1,72 @@
+#dropdown-basic:focus {
+  box-shadow: none;
+}
+
+nav {
+  height: 50px;
+  position: fixed;
+  right: 0;
+  left: 200px;
+  background-color: #212529;
+  box-shadow: -1px 0px 4px 4px rgba(0, 0, 0, 0.452);
+  z-index: 2;
+}
+
+.search {
+  width: 40%;
+  color: rgb(75, 88, 99);
+  padding: 4px 10px;
+  font-size: 14px;
+  background-color: rgb(255, 255, 255);
+  align-self: center;
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.171);
+  position: relative;
+  border-radius: 20px;
+  opacity: 0.95;
+}
+
+.search:hover {
+  opacity: 1;
+}
+
+.search ion-icon {
+  color: rgb(169, 172, 185);
+  font-size: 30px;
+  position: absolute;
+  right: 5px;
+  top: 1px;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.search ion-icon:hover {
+  color: rgb(137, 141, 156);
+  transform: scale(1.1);
+}
+
+.search ion-icon:active {
+  transform: scale(1);
+}
+
+.search-input {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.btn-upgrade {
+  color: black;
+  align-self: center;
+  font-size: 13px;
+  text-transform: capitalize;
+  text-decoration: none;
+  background-color: #ffe500;
+  padding: 7px;
+  opacity: 0.9;
+  border-radius: 2px;
+}
+
+.btn-upgrade:hover {
+  color: black;
+  opacity: 1;
+}

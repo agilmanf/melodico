@@ -1,0 +1,9 @@
+.artist-page-image {
+  width: 100%;
+  object-fit: cover;
+  max-width: 350px;
+  aspect-ratio: 1/1;
+  transition: 200ms cubic-bezier(0.39, 0.575, 0.565, 1);
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.575);
+}
