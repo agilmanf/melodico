@@ -5,7 +5,7 @@ export const USER_REGISTER = "USER_REGISTER";
 export const USER_LOGIN = "USER_LOGIN";
 
 export const userRegister = (data) => {
-  console.log("2.masuk actions");
+  // console.log("2.masuk actions");
   return (dispatch) => {
     dispatch({
       type: USER_REGISTER,
@@ -22,7 +22,7 @@ export const userRegister = (data) => {
       data: data,
     })
       .then((response) => {
-        console.log("3. dapet api", response.data);
+        // console.log("3. dapet api", response.data);
         dispatch({
           type: USER_REGISTER,
           payload: {
@@ -34,7 +34,7 @@ export const userRegister = (data) => {
       })
 
       .catch((error) => {
-        console.log("3. gagal dapet api", error.message);
+        // console.log("3. gagal dapet api", error.message);
         dispatch({
           type: USER_REGISTER,
           payload: {
@@ -65,7 +65,7 @@ export const userLogin = (data) => {
     })
       .then((response) => {
         alert("login berhasil");
-        console.log("dapet api", response.data);
+        // console.log("dapet api", response.data);
         window.location = "/";
         dispatch({
           type: USER_LOGIN,
@@ -78,7 +78,8 @@ export const userLogin = (data) => {
       })
 
       .catch((error) => {
-        console.log("gagal dapet api", error.message);
+        // console.log("gagal dapet api", error.message);
+        alert("Email atau Password anda salah!");
         dispatch({
           type: USER_LOGIN,
           payload: {

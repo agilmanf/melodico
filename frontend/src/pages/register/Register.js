@@ -1,35 +1,43 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import logo from "../../asset/melodico.png";
-import "./register.css";
-import { userRegister } from "../../redux/actions/register&login.action";
-import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import React, { useEffect, useState, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { userRegister } from "../../redux/actions/register&login.action";
+import { Link } from "react-router-dom";
+
+import "./register.css";
+import logo from "../../asset/melodico.svg";
 
 function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
   const [user, setUser] = useState(false);
 
+  const errorMessege = useRef();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(userRegister({ name: name, email: email, password: password }));
+
+    if (password !== confirm)
+      return (errorMessege.current.innerHTML = "*Password tidak cocok");
+
+    dispatch(userRegister({ name, email, password }));
+    alert("Daftar Berhasil");
+    window.location = "/login";
   };
 
-  async function getUser() {
+  async function checkUser() {
     const userLogin = await axios
       .get("https://melodico.herokuapp.com/token")
-      .catch((err) => console.log(err));
+      .catch((err) => false);
 
     setUser(userLogin);
   }
 
   useEffect(() => {
-    getUser();
+    checkUser();
 
     if (user) {
       window.location = "/";
@@ -37,54 +45,87 @@ function Register() {
   }, [user]);
 
   return (
-    <div>
-      <div className="container">
-        <div className="mt-4">
-          <img className="logo-register rounded-3" src={logo} alt="" />
-          <p className="title-register text-center">
-            Daftar gratis unutk mulai mendengarkan
-          </p>
-        </div>
-
-        <div className="content-form mb-5">
-          <form onSubmit={(e) => handleSubmit(e)}>
-            <label className="d-block">Name :</label>
-            <input
-              type="text"
-              className="w-100 rounded-3"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <label className="d-block mt-3">Email :</label>
-            <input
-              type="text"
-              className="w-100 rounded-3"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <label className="d-block mt-3">Password :</label>
-            <input
-              type="password"
-              className="w-100 rounded-3"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-
-            <div className="mt-2">
-              <button type="submit" className="btn-register rounded-3">
-                Register
-              </button>
-              <p className="d-inline ms-2">
-                Sudah punya akun?{" "}
-                <Link to="/login">
-                  <b>Login</b>
-                </Link>
-              </p>
+    <section className="register row m-0">
+      <article className="col-md-7 position-relative px-4">
+        <div>
+          <h1 className="text-center my-5">
+            <span className="text-yellow">Daftar Gratis</span> Untuk Mulai
+            Mendengarkan
+          </h1>
+          <form
+            onSubmit={(e) => handleSubmit(e)}
+            className="form-register w-75 m-auto d-flex flex-column gap-3"
+          >
+            <label htmlFor="nama" className="d-flex flex-column">
+              <span className="mb-2">Nama Lengkap</span>
+              <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                id="nama"
+                type="text"
+                placeholder="John Doe"
+                required
+              />
+            </label>
+            <label htmlFor="email" className="d-flex flex-column">
+              <span className="mb-2">Email</span>
+              <input
+                id="email"
+                type="email"
+                placeholder="john@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </label>
+            <div className="d-md-flex justify-content-between w-100 gap-3">
+              <label htmlFor="password" className="d-flex flex-column w-100">
+                <span className="mb-2">Password</span>
+                <input
+                  id="password"
+                  type="password"
+                  className="w-100"
+                  placeholder="•••••••••"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </label>
+              <label htmlFor="confirm" className="d-flex flex-column w-100">
+                <span className="mb-2">Confirm Password</span>
+                <input
+                  id="confirm"
+                  type="password"
+                  className="w-100"
+                  placeholder="•••••••••"
+                  value={confirm}
+                  onChange={(e) => setConfirm(e.target.value)}
+                  required
+                />
+              </label>
+            </div>
+            <div className="d-md-flex gap-3 mt-2">
+              <div className="w-100">
+                <span className="text-white">
+                  Sudah Punya Akun ?{" "}
+                  <Link className="fw-bold" to="/login">
+                    Login
+                  </Link>
+                </span>
+                <span ref={errorMessege} className="d-block text-danger"></span>
+              </div>
+              <div className="w-100 mt-3 mt-sm-0 d-sm-flex justify-content-end">
+                <button type="submit" className="btn btn-primary h-100 w-50">
+                  Daftar
+                </button>
+              </div>
             </div>
           </form>
         </div>
-      </div>
-    </div>
+        <img src={logo} alt="logo" className="logo" />
+      </article>
+      <aside className="col-md-5 d-none d-md-block"></aside>
+    </section>
   );
 }
 

@@ -1,52 +1,54 @@
-body{
-    margin: 0;
-    padding: 0;
+.register {
+  width: 100%;
+  height: 100vh;
 }
 
-.logo-register{
-    width: 50%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+.register article {
+  position: relative;
+  z-index: 1;
+  box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.575);
 }
 
-.title-register{
-    font-size: 30px;
+.register aside {
+  background-image: url("https://source.unsplash.com/k3heD_KwH0A/683x768");
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
 }
 
-.content-form{
-    width: 50%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+.register aside::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(37, 26, 77, 0.274);
+  left: 0;
 }
 
-.content-form input, select {
-    height: 35px;
-    border: 1px solid #dddddd;
-    outline: none;
+.register article .logo {
+  position: absolute;
+  width: 170px;
+  bottom: 0;
+  right: 0;
 }
 
-.btn-register{
-    width: 30%;
-    background-color: yellow;
-    border: none;
-    font-weight: bolder;
-    height: 35px;
+.form-register input {
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: none;
+  color: rgba(2, 2, 2, 0.863);
 }
 
-@media screen and (max-width: 480px){
-    .logo-register{
-        width: 100%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    .content-form{
-        width: 100%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
+.form-register input::placeholder {
+  color: rgb(194, 194, 194);
+  font-style: italic;
+}
+
+.form-register span {
+  color: #dadadabe;
+}
+
+.text-yellow {
+  color: #ffe500;
 }
